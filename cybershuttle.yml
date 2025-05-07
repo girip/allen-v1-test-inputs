@@ -1,0 +1,33 @@
+project:
+  name: "AllenV1_Test"
+  description: "Test inputs for Allen V1 model"
+  homepage: https://github.com/girip/allen-v1-test-inputs
+  authors:
+    - tmatto3@gatech.edu
+  tags:
+
+
+workspace:
+  resources:
+    min_cpu: 10
+    min_mem: 102400
+    min_gpu: 0
+    gpu_mem: 0
+  model_collection:
+    - source: cybershuttle
+      identifier: allenai-v1
+      mount_point: /cybershuttle_data/allenai-v1
+  data_collection: []
+
+additional_dependencies:
+  modules: []
+  conda:
+    - python=3.10
+    - pip
+    - ipywidgets
+    - numpy
+    - pandas
+    - matplotlib
+    - nest-simulator
+    - kaeldai::bmtk
+  pip: []

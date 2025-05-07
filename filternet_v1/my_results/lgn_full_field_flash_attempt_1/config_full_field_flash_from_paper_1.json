@@ -1,0 +1,51 @@
+{
+  "run": {
+    "tstop": 3000.0,
+    "dt": 1.0
+  },
+  "target_simulator": "LGNModel",
+  "inputs": {
+    "full_field_flash_1": {
+      "input_type": "movie",
+      "module": "full_field_flash",
+      "row_size": 120,
+      "col_size": 240,
+      "t_on": 500.0,
+      "t_off": 750.0,
+      "max_intensity": 20.0,
+      "frame_rate": 1000.0
+    },
+    "full_field_flash_2": {
+      "input_type": "movie",
+      "module": "full_field_flash",
+      "row_size": 120,
+      "col_size": 240,
+      "t_on": 1750.0,
+      "t_off": 2000.0,
+      "max_intensity": -20.0,
+      "frame_rate": 1000.0
+    }
+  },
+  "output": {
+    "log_file": "./my_results/lgn_full_field_flash_attempt_1/log.txt",
+    "output_dir": "./my_results/lgn_full_field_flash_attempt_1",
+    "spikes_csv": "spikes.csv",
+    "spikes_h5": "spikes.h5",
+    "rates_h5": "rates.h5",
+    "overwrite_output_dir": false,
+    "log_level": "DEBUG"
+  },
+  "components": {
+    "filter_models_dir": "./filter_components/model_templates"
+  },
+  "networks": {
+    "nodes": [
+      {
+        "nodes_file": "./network/lgn_nodes.h5",
+        "node_types_file": "./network/lgn_node_types.csv"
+      }
+    ]
+  },
+  "config_path": "/storage/coda1/p-nimam6/0/tmatto3/projects/brain_resonance/filternet_v1/my_configs/config_full_field_flash_from_paper_1.json",
+  "config_dir": "/storage/coda1/p-nimam6/0/tmatto3/projects/brain_resonance/filternet_v1/my_configs"
+}

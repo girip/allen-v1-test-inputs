@@ -1,0 +1,13 @@
+2023-12-01 15:21:50,350 [INFO] Created log file
+2023-12-01 15:21:51,617 [INFO] Batch processing nodes for v1/0.
+2023-12-01 15:21:51,712 [INFO] Batch processing nodes for lgn/0.
+2023-12-01 15:21:51,725 [INFO] Batch processing nodes for bkg/0.
+2023-12-01 15:21:58,970 [INFO] Setting up output directory
+2023-12-01 15:21:58,976 [INFO] Building cells.
+2023-12-01 15:22:14,881 [INFO] Building recurrent connections
+2023-12-01 15:26:06,727 [INFO] Build virtual cell stimulations for LGN_spikes
+2023-12-01 15:26:37,561 [INFO] Build virtual cell stimulations for BKG_spikes
+2023-12-01 15:26:38,538 [INFO] Network created.
+2023-12-01 15:26:46,181 [INFO] Starting Simulation
+2023-12-01 15:38:29,566 [INFO] Simulation finished, finalizing results.
+2023-12-01 15:38:44,918 [INFO] Done.

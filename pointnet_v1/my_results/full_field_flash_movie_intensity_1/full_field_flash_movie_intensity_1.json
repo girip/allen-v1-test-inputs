@@ -1,0 +1,67 @@
+{
+  "run": {
+    "duration": 3000.0,
+    "dt": 0.25,
+    "tstart": 0.0,
+    "tstop": 3000.0
+  },
+  "inputs": {
+    "LGN_spikes": {
+      "input_type": "spikes",
+      "module": "h5",
+      "input_file": "../filternet_v1/my_results/full_field_flash_movie_1_-1_intensity/spikes.h5",
+      "node_set": "lgn"
+    },
+    "BKG_spikes": {
+      "input_type": "spikes",
+      "module": "csv",
+      "input_file": "./bkg_inputs/bkg_spikes_n1_fr1000_dt0.25/spikes.trial_0.csv",
+      "node_set": "bkg"
+    }
+  },
+  "output": {
+    "log_file": "./my_results/full_field_flash_movie_intensity_1/log.txt",
+    "spikes_file": "./my_results/full_field_flash_movie_intensity_1/spikes.h5",
+    "spikes_file_csv": "./my_results/full_field_flash_movie_intensity_1/spikes.csv",
+    "output_dir": "./my_results/full_field_flash_movie_intensity_1",
+    "overwrite_output_dir": true,
+    "quiet_simulator": true
+  },
+  "target_simulator": "NEST",
+  "components": {
+    "point_neuron_models_dir": "./components/cell_models/nest_models",
+    "synaptic_models_dir": "./components/synaptic_models"
+  },
+  "networks": {
+    "nodes": [
+      {
+        "nodes_file": "./network/v1_nodes.h5",
+        "node_types_file": "./network/v1_node_types.csv"
+      },
+      {
+        "nodes_file": "./network/lgn_nodes.h5",
+        "node_types_file": "./network/lgn_node_types.csv"
+      },
+      {
+        "nodes_file": "./network/bkg_nodes.h5",
+        "node_types_file": "./network/bkg_node_types.csv"
+      }
+    ],
+    "edges": [
+      {
+        "edges_file": "./network/v1_v1_edges.h5",
+        "edge_types_file": "./network/v1_v1_edge_types.csv"
+      },
+      {
+        "edges_file": "./network/lgn_v1_edges.h5",
+        "edge_types_file": "./network/lgn_v1_edge_types.csv"
+      },
+      {
+        "edges_file": "./network/bkg_v1_edges.h5",
+        "edge_types_file": "./network/bkg_v1_edge_types.csv"
+      }
+    ]
+  },
+  "config_path": "/storage/coda1/p-nimam6/0/tmatto3/projects/brain_resonance/pointnet_v1/my_configs/full_field_flash_movie_intensity_1.json",
+  "config_dir": "/storage/coda1/p-nimam6/0/tmatto3/projects/brain_resonance/pointnet_v1/my_configs"
+}

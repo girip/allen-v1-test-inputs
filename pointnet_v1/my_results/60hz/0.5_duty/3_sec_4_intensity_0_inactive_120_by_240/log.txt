@@ -1,0 +1,14 @@
+2025-03-19 07:51:43,094 [INFO] Created log file
+2025-03-19 07:51:43,095 [INFO] Running NEST with MPI (12 cores)
+2025-03-19 07:52:36,529 [INFO] Batch processing nodes for v1/0.
+2025-03-19 07:52:37,678 [INFO] Batch processing nodes for lgn/0.
+2025-03-19 07:52:39,060 [INFO] Batch processing nodes for bkg/0.
+2025-03-19 07:52:49,502 [INFO] Setting up output directory
+2025-03-19 07:52:49,504 [INFO] Building cells.
+2025-03-19 07:52:52,650 [INFO] Building recurrent connections
+2025-03-19 07:53:34,920 [INFO] Network created.
+2025-03-19 07:53:34,922 [INFO] Build virtual cell stimulations for LGN_spikes
+2025-03-19 07:53:53,563 [INFO] Build virtual cell stimulations for BKG_spikes
+2025-03-19 07:53:55,782 [INFO] Starting Simulation
+2025-03-19 07:54:50,527 [INFO] Simulation finished, finalizing results.
+2025-03-19 07:55:18,276 [INFO] Done.

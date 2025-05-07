@@ -1,0 +1,23 @@
+2025-03-03 04:23:26,084 [INFO] Created log file
+2025-03-03 04:23:27,313 [INFO] Building cells.
+2025-03-03 04:23:27,314 [DEBUG]  Adding lgn cells.
+2025-03-03 04:23:30,860 [DEBUG]   Adding cell 145 of 1450 (on rank 0).
+2025-03-03 04:23:34,206 [DEBUG]   Adding cell 290 of 1450 (on rank 0).
+2025-03-03 04:23:38,234 [DEBUG]   Adding cell 435 of 1450 (on rank 0).
+2025-03-03 04:23:47,675 [DEBUG]   Adding cell 580 of 1450 (on rank 0).
+2025-03-03 04:23:51,869 [DEBUG]   Adding cell 725 of 1450 (on rank 0).
+2025-03-03 04:23:58,618 [DEBUG]   Adding cell 870 of 1450 (on rank 0).
+2025-03-03 04:24:02,116 [DEBUG]   Adding cell 1015 of 1450 (on rank 0).
+2025-03-03 04:24:05,472 [DEBUG]   Adding cell 1160 of 1450 (on rank 0).
+2025-03-03 04:24:08,851 [DEBUG]   Adding cell 1305 of 1450 (on rank 0).
+2025-03-03 04:24:12,402 [INFO] Evaluating rates.
+2025-03-03 04:28:36,961 [DEBUG]  Processing cell 145 of 1450 (on rank 0).
+2025-03-03 04:36:20,054 [DEBUG]  Processing cell 290 of 1450 (on rank 0).
+2025-03-03 04:53:33,293 [DEBUG]  Processing cell 435 of 1450 (on rank 0).
+2025-03-03 05:06:33,319 [DEBUG]  Processing cell 580 of 1450 (on rank 0).
+2025-03-03 05:11:31,361 [DEBUG]  Processing cell 725 of 1450 (on rank 0).
+2025-03-03 05:24:22,563 [DEBUG]  Processing cell 870 of 1450 (on rank 0).
+2025-03-03 05:35:19,957 [DEBUG]  Processing cell 1015 of 1450 (on rank 0).
+2025-03-03 05:49:14,534 [DEBUG]  Processing cell 1160 of 1450 (on rank 0).
+2025-03-03 05:56:51,782 [DEBUG]  Processing cell 1305 of 1450 (on rank 0).
+2025-03-03 06:03:18,452 [INFO] Done.

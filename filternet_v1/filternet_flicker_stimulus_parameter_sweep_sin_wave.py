@@ -1,0 +1,115 @@
+import numpy as np
+#import shutil
+import json
+from my_stimulus.create_flicker_stimulus import generate_sin_wave_flicker_stimulus_1ms_resolution
+import subprocess
+import os
+
+
+
+#frequencies = [7]
+#duty_cycles = [.33]
+#pixel_intensities = [4]
+
+#t_ms = 1000*duty/frequency
+#t_ms = 10 = 1000 * .5 / 50
+#duty = frequency * t_ms / 1000
+#duty = 50 * 10 / 1000 = .5
+
+
+
+#frequencies = [2,4,6,8,10,12,14,16,18,20,22,24,26, 28, 30, 32, 34, 36, 38, 40, 45, 50, 55, 60]
+frequencies = [10]
+
+stimulus_presentation_times = [10]
+pixel_intensities = [4]
+
+print("FILTERNET CONSTANT STIMULUS PRESENTATION TIME PARAMETER SWEEP")
+
+default_config_path = './my_configs/config_flicker_1.json'
+slurm_script_path = './slurm_scripts/run_filternet_config_parameter.sbatch'
+
+assert(os.path.isfile(default_config_path))
+assert(os.path.isfile(slurm_script_path))
+
+
+base_stimulus_save_path = './my_stimulus/sin_wave_stimulus'
+base_config_save_path = './my_configs/sin_wave_stimulus'
+base_results_save_path = './my_results/sin_wave_stimulus'
+res_x=120; res_y=240
+
+for frequency in frequencies:
+    for pixel_in in pixel_intensities:
+
+
+        results_save_path = base_results_save_path + '/{}hz/3_sec_{}_intensity_0_inactive_{}_by_{}'.format(
+            frequency, pixel_in, res_x, res_y)
+        stimulus_save_path = base_stimulus_save_path + '/{}hz/3_sec_{}_intensity_0_inactive_{}_by_{}.npy'.format(
+            frequency, pixel_in, res_x, res_y)
+        stimulus_plot_save_path = base_stimulus_save_path + '/{}hz/3_sec_{}_intensity_0_inactive_{}_by_{}.png'.format(
+            frequency, pixel_in, res_x, res_y)
+        configs_save_path = base_config_save_path + '/{}hz/3_sec_{}_intensity_0_inactive_{}_by_{}.json'.format(
+            frequency, pixel_in, res_x, res_y)
+
+
+        print("frequency: {} pixel intensity: {}".format(frequency, pixel_in))
+        if not os.path.isfile(stimulus_save_path):
+            #generate flicker stimulus
+            _ = generate_sin_wave_flicker_stimulus_1ms_resolution(total_time_ms=3000,
+                                                     time_step_size_ms=.25,
+                                                     time_delay_start_ms=500, time_delay_end_ms=500,
+                                                     frequency=frequency, max_pixel_intensity=pixel_in,
+                                                    res_x=res_x, res_y=res_y,
+                                                     file_save_path=stimulus_save_path,
+                                                     plot_save_path=stimulus_plot_save_path
+                                                    )
+        else:
+            print("stimulus for parameters frequency {} intensity {} has already been generated".format(frequency, pixel_in))
+
+
+
+
+
+
+        #OPEN DEFAULT CONFIG JSON FILE
+        with open(default_config_path, "r") as file:
+            config_data = json.load(file)
+
+
+        #MODIFY DEFAULT CONFIG JSON FILE
+        config_data["manifest"]["$OUTPUT_DIR"] = results_save_path
+        config_data["inputs"]["movie_input"]["data_file"] = stimulus_save_path
+        config_data["inputs"]["movie_input"]["frame_rate"] = 4000.0
+
+
+        #SAVE DEFAULT CONFIG JSON FILE
+        configs_save_directory = os.path.dirname(configs_save_path)
+        os.makedirs(configs_save_directory, exist_ok=True)
+
+        if not os.path.isfile(configs_save_path):
+            with open(configs_save_path, "x") as file:
+                json.dump(config_data, file, indent=4)  # `indent=4` for pretty formatting
+
+
+
+        #if jobs are completed, you can use /spikes.h5 instead of /log.txt, since log does not guarantee job successfully finished
+        if not os.path.isfile(results_save_path + '/log.txt'):
+
+            print("sbatch {} {}".format(slurm_script_path, configs_save_path))
+            #run config file
+            result = subprocess.run(["sbatch", slurm_script_path, configs_save_path], capture_output=True, text=True)
+
+
+            if result.returncode == 0:
+                print(f"Job submitted successfully: {result.stdout}")
+            else:
+                print(f"Error submitting job: {result.stderr}")
+        else:
+            print("simulation for parameters frequency {} intensity {} has already run".format(frequency, pixel_in))
+
+
+
+
+
+
+

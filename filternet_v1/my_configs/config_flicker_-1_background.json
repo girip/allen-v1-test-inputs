@@ -1,0 +1,46 @@
+{
+  "manifest": {
+    "$BASE_DIR": ".",
+    "$OUTPUT_DIR": "./my_results/lgn_flicker_-1_background",
+    "$NETWORK_DIR": "$BASE_DIR/network",
+    "$COMPONENT_DIR": "$BASE_DIR/filter_components"
+  },
+
+  "run": {
+    "tstop": 3000.0,
+    "dt": 1.0
+  },
+  "target_simulator": "LGNModel",
+
+  "inputs": {
+    "movie_input": {
+      "input_type": "movie",
+      "module": "movie",
+      "data_file":"./my_stimulus/3_sec_10ms_stimuli_1_sec_-1_inactive_before_and_after.npy",
+      "frame_rate": 1000.0,
+      "normalize": false,
+      "y_dir": "down",
+      "flip_y": false
+    }
+  },
+  "output": {
+    "log_file": "log.txt",
+    "output_dir": "${OUTPUT_DIR}",
+    "spikes_csv": "spikes.csv",
+    "spikes_h5": "spikes.h5",
+    "rates_h5": "rates.h5",
+    "overwrite_output_dir": false,
+    "log_level": "DEBUG"
+  },
+  "components": {
+    "filter_models_dir": "${COMPONENT_DIR}/model_templates"
+  },
+  "networks": {
+    "nodes": [
+      {
+        "nodes_file": "${NETWORK_DIR}/lgn_nodes.h5",
+        "node_types_file": "${NETWORK_DIR}/lgn_node_types.csv"
+      }
+    ]
+  }
+}

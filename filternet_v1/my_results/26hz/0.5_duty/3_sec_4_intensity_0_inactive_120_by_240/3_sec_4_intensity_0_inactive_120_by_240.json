@@ -1,0 +1,40 @@
+{
+  "run": {
+    "tstop": 3000.0,
+    "dt": 1.0
+  },
+  "target_simulator": "LGNModel",
+  "inputs": {
+    "movie_input": {
+      "input_type": "movie",
+      "module": "movie",
+      "data_file": "./my_stimulus/26hz/0.5_duty/3_sec_4_intensity_0_inactive_120_by_240.npy",
+      "frame_rate": 1000.0,
+      "normalize": false,
+      "y_dir": "down",
+      "flip_y": false
+    }
+  },
+  "output": {
+    "log_file": "./my_results/26hz/0.5_duty/3_sec_4_intensity_0_inactive_120_by_240/log.txt",
+    "output_dir": "./my_results/26hz/0.5_duty/3_sec_4_intensity_0_inactive_120_by_240",
+    "spikes_csv": "spikes.csv",
+    "spikes_h5": "spikes.h5",
+    "rates_h5": "rates.h5",
+    "overwrite_output_dir": false,
+    "log_level": "DEBUG"
+  },
+  "components": {
+    "filter_models_dir": "./filter_components/model_templates"
+  },
+  "networks": {
+    "nodes": [
+      {
+        "nodes_file": "./network/lgn_nodes.h5",
+        "node_types_file": "./network/lgn_node_types.csv"
+      }
+    ]
+  },
+  "config_path": "/storage/coda1/p-nimam6/0/tmatto3/projects/brain_resonance/filternet_v1/my_configs/26hz/0.5_duty/3_sec_4_intensity_0_inactive_120_by_240.json",
+  "config_dir": "/storage/coda1/p-nimam6/0/tmatto3/projects/brain_resonance/filternet_v1/my_configs/26hz/0.5_duty"
+}
